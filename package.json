@@ -3,6 +3,12 @@
   "displayName": "Frost Schema Syntax Highlighting",
   "description": "Syntax Highlighting for Frost Schema Language",
   "version": "0.0.1",
+  "icon": "https://frost.sami-mishal.online/img/icon_small.png",
+  "author": {
+    "email": "samishal.1998@gmail.com",    
+    "name": "Sami Mishal"
+  },
+  "publisher": "Frost ORM",
   "engines": {
     "vscode": "^1.70.0"
   },

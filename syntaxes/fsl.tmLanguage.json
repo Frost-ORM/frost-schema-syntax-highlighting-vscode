@@ -9,6 +9,9 @@
 			"include": "#declaration"
 		},
 		{
+			"include": "#property"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -25,9 +28,6 @@
 		},
 		{
 			"include": "#boolean"
-		},
-		{
-			"include": "#property"
 		}
 	],
 	"repository": {
@@ -53,19 +53,19 @@
 		"numbers": {
 			"patterns": [
 				{
-					"name": "constant.numeric",
-					"match": "-?(0|[1-9][0-9]+)"
+					"name": "constant.numeric.fsl",
+					"match": "-?(0|[1-9][0-9]*)"
 				}
 			]
 		},
 		"comments": {
-			"name": "comment.line.double-dash",
+			"name": "comment.line.double-dash.fsl",
 			"match": "//.*$"
 		},
 		"boolean": {
 			"patterns": [
 				{
-					"name": "keyword.other",
+					"name": "keyword.other.fsl",
 					"match": "\\b(true|false)\\b"
 				}
 			]
@@ -139,7 +139,7 @@
 			"patterns": [
 				{
 					"name": "variable.parameter",
-					"match": "\\w+:"
+					"match": "\\w+\\s*:"
 				},
 				{
 					"include": "#value"
@@ -165,14 +165,14 @@
 			]
 		},
 		"property": {
-			"name": "constant.other",
+			"name": "constant.other.fsl",
 			"match": "(\\w+)\\s+(\\w+(\\[\\])?(\\??))",
 			"captures": {
 				"1":{
-					"name":"variable.name"
+					"name":"variable.name.fsl"
 				},
 				"2":{
-					"name":"entity.name.type"
+					"name":"entity.name.type.fsl"
 				}
 			}
 		},
@@ -183,7 +183,7 @@
 					"name": "keyword.control.fsl"
 				},
 				"2":{
-					"name":"entity.name.type"
+					"name":"entity.name.type.fsl"
 				}
 			}
 		}
