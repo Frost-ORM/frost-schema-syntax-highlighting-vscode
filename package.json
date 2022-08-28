@@ -1,0 +1,29 @@
+{
+  "name": "frost-schema-syntax-highlighting",
+  "displayName": "Frost Schema Syntax Highlighting",
+  "description": "Syntax Highlighting for Frost Schema Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fsl",
+      "aliases": ["Frost Schema Language", "fsl"],
+      "extensions": [".fsl","fs"],
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./icons/frost-light.png",
+        "dark": "./icons/frost-dark.png"
+      }
+    }],
+    "grammars": [{
+      "language": "fsl",
+      "scopeName": "source.fsl",
+      "path": "./syntaxes/fsl.tmLanguage.json"
+    }]
+  }
+}

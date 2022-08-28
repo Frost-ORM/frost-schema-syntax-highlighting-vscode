@@ -1,0 +1,194 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Frost Schema Language",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#declaration"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#pragmas"
+		},
+		{
+			"include": "#modifiers"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#boolean"
+		},
+		{
+			"include": "#property"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.fsl",
+					"match": "\\b(model|enum|type)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.other.fsl",
+			"begin": "(\"|'|`)",
+			"end": "(\"|'|`)",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fsl",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric",
+					"match": "-?(0|[1-9][0-9]+)"
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.line.double-dash",
+			"match": "//.*$"
+		},
+		"boolean": {
+			"patterns": [
+				{
+					"name": "keyword.other",
+					"match": "\\b(true|false)\\b"
+				}
+			]
+		},
+		"pragmas": {
+			"name":"meta.decorator.fsl",
+			"patterns": [
+				{
+					"match": "(@@)(\\w+)(.*)",
+					"captures": {
+						"1": {
+							"name":"punctuation.decorator.fsl"
+						},
+						"2": {
+							"name":"entity.name.function.fsl"
+						},
+						"3": {
+							"patterns": [
+								{
+									"include": "#named_args"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"modifiers": {
+			"patterns": [
+				{
+					"name":"meta.decorator.fsl",
+					"match": "(@)(\\w+)(.*)",
+					"captures": {
+						"1": {
+							"name":"punctuation.decorator.fsl"
+						},
+						"2": {
+							"name":"entity.name.function.fsl"
+						},
+						"3": {
+							"patterns": [
+								{
+									"include": "#named_args"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"named_args": {
+			"begin": "\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.begin.fsl"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.end.fsl"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#named_arg"
+				}
+			]
+		},
+		"named_arg": {
+			"patterns": [
+				{
+					"name": "variable.parameter",
+					"match": "\\w+:"
+				},
+				{
+					"include": "#value"
+				},
+				{
+					"name": "punctuation.separator.parameter.fsl",
+					"match": ","
+				}
+			]
+		},
+		"value": {
+			"name": "constant.other",
+			"patterns": [
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#boolean"
+				}
+			]
+		},
+		"property": {
+			"name": "constant.other",
+			"match": "(\\w+)\\s+(\\w+(\\[\\])?(\\??))",
+			"captures": {
+				"1":{
+					"name":"variable.name"
+				},
+				"2":{
+					"name":"entity.name.type"
+				}
+			}
+		},
+		"declaration": {
+			"match": "\\b(model|enum|type)\\s+(\\w+)\\s*{",
+			"captures": {
+				"1":{
+					"name": "keyword.control.fsl"
+				},
+				"2":{
+					"name":"entity.name.type"
+				}
+			}
+		}
+
+	},
+
+	"scopeName": "source.fsl"
+}
